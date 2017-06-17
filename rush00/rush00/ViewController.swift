@@ -10,8 +10,13 @@ import UIKit
 
 class ViewController: UIViewController, APIIntraDelegate {
 
-    var token: String?
-    static var access_token: String?
+	var token: String?
+	static var access_token: String? {
+		didSet {
+			let api = APIController(delegate: self as! APIIntraDelegate, token: self.token!, login: "stoussay")
+			api.getTopics()
+		}
+	}
     var topics: [Msg] = []
     static let UID = "d3b16514976a970424adee2ee2460a91a2a484f3e70ac70ed6c6ce4316cbe8a4"
     static let SECRET = "4ad66ff5c67dbc8f51a86d724da7438d1b3e2543f3a1e63d39fc9f5f8454284c"
@@ -22,7 +27,6 @@ class ViewController: UIViewController, APIIntraDelegate {
 		authenticateUser()
         print("sak")
 
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
 	func authenticateUser() {
