@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2F541867CA415A916A614F1792D0036DFE3908FE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F98BD8A2C556B4A99F44C77C9BD2A8FFEDAF6F14" : 9223372036854775807,
+    "2F541867CA415A916A614F1792D0036DFE3908FE" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F348983B-C5D3-48A6-8A77-EB9EF3AF685F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F98BD8A2C556B4A99F44C77C9BD2A8FFEDAF6F14" : "..\/..",
+    "2F541867CA415A916A614F1792D0036DFE3908FE" : "rush00_github\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "rush00",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "rush00\/rush00.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ErenO\/rush00.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2F541867CA415A916A614F1792D0036DFE3908FE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/samyy321\/42.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F98BD8A2C556B4A99F44C77C9BD2A8FFEDAF6F14"
+    }
+  ]
+}

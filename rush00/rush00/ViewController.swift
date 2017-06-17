@@ -12,17 +12,32 @@ class ViewController: UIViewController, APIIntraDelegate {
 
     var token: String?
     var topics: [Msg] = []
-    
+	let UID = "d3b16514976a970424adee2ee2460a91a2a484f3e70ac70ed6c6ce4316cbe8a4"
+
+	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
         getToken()
-        
+		authenticateUser()
+
+		
         // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func viewDidAppear(_ animated: Bool) {
 //        makeReq()
     }
+
+	func authenticateUser() {
+		let redirectUri = "rush01://rush01".addingPercentEncoding(withAllowedCharacters: .urlUserAllowed)
+		let urlString = "https://api.intra.42.fr/oauth/authorize?client_id=\(UID)&redirect_uri=\(redirectUri!)&response_type=code&scope=public&state=coucou"
+		if let url = URL(string: urlString) {
+			UIApplication.shared.open(url, options: [:], completionHandler: nil)
+		} else {
+			print("url error")
+		}
+	}
 
     func getToken() {
         let UID = "d3b16514976a970424adee2ee2460a91a2a484f3e70ac70ed6c6ce4316cbe8a4"

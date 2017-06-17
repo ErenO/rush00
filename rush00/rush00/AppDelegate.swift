@@ -13,6 +13,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+	func getAccessToken(code: String) {
+		let UID = "d3b16514976a970424adee2ee2460a91a2a484f3e70ac70ed6c6ce4316cbe8a4"
+		let SECRET = "4ad66ff5c67dbc8f51a86d724da7438d1b3e2543f3a1e63d39fc9f5f8454284c"
+		let redirectUri = "rush01://rush01".addingPercentEncoding(withAllowedCharacters: .urlUserAllowed)
+		
+		let url = URL(string: "https://api.intra.42.fr/oauth/token")
+		
+		let request = NSMutableURLRequest(url: url!)
+		request.httpMethod = "POST"
+		request.setValue("application/x-www-form-urlencoded;charset=UTF-8", forHTTPHeaderField: "Content-Type")
+		request.httpBody = "grant_type=authorization_code&client_id=\(UID)&client_secret=\(SECRET)&code=\(code)&redirect_uri=\(redirectUri)&state=coucou".data(using: String.Encoding.utf8)
+		
+		let task = URLSession.shared.dataTask(with: request as URLRequest) {
+			(data, response, error) in
+			//        	print(response)
+			if let err = error {
+				print(err)
+			}
+			else if let d = data {
+				do {
+					if let dic : NSDictionary = try JSONSerialization.jsonObject(with: d, options: .mutableContainers) as? NSDictionary {
+//						if let response = dic["access_token"] {
+//							self.token = response as? String
+//							print(">>>>>>>>>>>>>>>>\(self.token!)<<<<<<<<<<<<<<<<<<<")
+//							self.makeReq()
+//						}
+					print(dic)
+					}
+				} catch (let err) {
+					print (err)
+				}
+			}
+		}
+		task.resume()
+	}
+
+	func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+//		print("appDelegate: \(url)")
+		let code = url.absoluteString.components(separatedBy: "&")[0].components(separatedBy: "=")[1]
+		print("code === \(code)")
+		self.getAccessToken(code: code)
+		return true
+	}
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
