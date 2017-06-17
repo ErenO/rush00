@@ -14,6 +14,9 @@
 		46EC56051EF56BEA00A2FB67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46EC56031EF56BEA00A2FB67 /* LaunchScreen.storyboard */; };
 		46EC56101EF56BEA00A2FB67 /* rush00Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC560F1EF56BEA00A2FB67 /* rush00Tests.swift */; };
 		46EC561B1EF56BEA00A2FB67 /* rush00UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC561A1EF56BEA00A2FB67 /* rush00UITests.swift */; };
+		46EC56291EF5838F00A2FB67 /* APIIntraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC56281EF5838F00A2FB67 /* APIIntraDelegate.swift */; };
+		46EC562B1EF583E400A2FB67 /* Msg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC562A1EF583E400A2FB67 /* Msg.swift */; };
+		46EC562D1EF584A000A2FB67 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC562C1EF584A000A2FB67 /* APIController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		46EC56161EF56BEA00A2FB67 /* rush00UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rush00UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46EC561A1EF56BEA00A2FB67 /* rush00UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rush00UITests.swift; sourceTree = "<group>"; };
 		46EC561C1EF56BEA00A2FB67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46EC56281EF5838F00A2FB67 /* APIIntraDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIIntraDelegate.swift; sourceTree = "<group>"; };
+		46EC562A1EF583E400A2FB67 /* Msg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Msg.swift; sourceTree = "<group>"; };
+		46EC562C1EF584A000A2FB67 /* APIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,9 @@
 			children = (
 				46EC55FA1EF56BEA00A2FB67 /* AppDelegate.swift */,
 				46EC55FC1EF56BEA00A2FB67 /* ViewController.swift */,
+				46EC562A1EF583E400A2FB67 /* Msg.swift */,
+				46EC562C1EF584A000A2FB67 /* APIController.swift */,
+				46EC56281EF5838F00A2FB67 /* APIIntraDelegate.swift */,
 				46EC55FE1EF56BEA00A2FB67 /* Main.storyboard */,
 				46EC56011EF56BEA00A2FB67 /* Assets.xcassets */,
 				46EC56031EF56BEA00A2FB67 /* LaunchScreen.storyboard */,
@@ -261,6 +270,9 @@
 			files = (
 				46EC55FD1EF56BEA00A2FB67 /* ViewController.swift in Sources */,
 				46EC55FB1EF56BEA00A2FB67 /* AppDelegate.swift in Sources */,
+				46EC56291EF5838F00A2FB67 /* APIIntraDelegate.swift in Sources */,
+				46EC562B1EF583E400A2FB67 /* Msg.swift in Sources */,
+				46EC562D1EF584A000A2FB67 /* APIController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
