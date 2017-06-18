@@ -12,44 +12,34 @@ class ViewController: UIViewController {
 
     let UID = "d3b16514976a970424adee2ee2460a91a2a484f3e70ac70ed6c6ce4316cbe8a4"
     let SECRET = "4ad66ff5c67dbc8f51a86d724da7438d1b3e2543f3a1e63d39fc9f5f8454284c"
-    var token: String?
+	var token: String? 
 	
     @IBAction func connectBtn(_ sender: Any) {
 		let session = UserDefaults.standard
-
         authenticateUser()
 		if session.string(forKey: "access_token") != nil {
 			performSegue(withIdentifier: "auth", sender: self)
 		}
     }
-	
-	override func viewDidAppear(_ animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
 		let session = UserDefaults.standard
-		print("before2")
-		print(session.string(forKey: "access_token"))
-		print("after2")
-		if session.string(forKey: "access_token") != nil {
+		if session.string(forKey: "access_token") != nil && session.string(forKey: "token") != nil {
 			performSegue(withIdentifier: "auth", sender: self)
 		}
-
+//		print("before2")
+//		print(session.string(forKey: "access_token"))
+//		print("after2")
 	}
-	
-	
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        getToken()
-//
+		getToken()
 //		let session = UserDefaults.standard
-//		print("before1")
-//		print(session.string(forKey: "access_token"))
-//		print("after1")
-//		if session.string(forKey: "access_token") != nil {
+//		if session.string(forKey: "access_token") != nil && session.string(forKey: "token") != nil {
 //			performSegue(withIdentifier: "auth", sender: self)
 //		}
-
-//        authenticateUser()
+        // Do any additional setup after loading the view, typically from a nib.
+        getToken()
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,12 +47,18 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+	
+	
     func authenticateUser() {
         let redirectUri = "rush01://rush01".addingPercentEncoding(withAllowedCharacters: .urlUserAllowed)
-        let urlString = "https://api.intra.42.fr/oauth/authorize?client_id=\(self.UID)&redirect_uri=\(redirectUri!)&response_type=code&scope=public&state=coucou"
+        let urlString = "https://api.intra.42.fr/oauth/authorize?client_id=\(self.UID)&redirect_uri=\(redirectUri!)&response_type=code&scope=public%20forum&state=coucou"
         if let url = URL(string: urlString) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        } else {
+			let session = UserDefaults.standard
+			if session.string(forKey: "access_token") != nil && session.string(forKey: "token") != nil {
+				performSegue(withIdentifier: "auth", sender: self)
+			}
+		} else {
             print("url error")
         }
     }
@@ -87,7 +83,6 @@ class ViewController: UIViewController {
                             self.token = response as? String
                             session.set(dic.value(forKey: "access_token"), forKey: "token")
                             session.synchronize()
-                            print(">>\(self.token!)<<")
                         }
                     }
                 } catch (let err) {
@@ -97,6 +92,7 @@ class ViewController: UIViewController {
         }
         task.resume()
     }
+	
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "auth" {

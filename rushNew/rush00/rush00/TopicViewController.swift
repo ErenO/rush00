@@ -11,12 +11,24 @@ import UIKit
 class TopicViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 	var topics: [topic] = []
+	var pageNb: Int = 1
 		
 	@IBOutlet weak var tableView: UITableView!
+
+	@IBAction func addTopicBtn(_ sender: Any) {
+		self.performSegue(withIdentifier: "addTopic", sender: self)
+	}
+	
+	@IBAction func nextPage(_ sender: UIBarButtonItem) {
+		self.pageNb += 1
+		getTopics(page: pageNb)
+	}
+
 	@IBAction func logoutBtn(_ sender: Any) {
 //		print("heldgflkfg")
 		self.performSegue(withIdentifier: "logOut", sender: self)
 	}
+
 	override func viewDidAppear(_ animated: Bool) {
 		let session = UserDefaults.standard
 
@@ -24,7 +36,7 @@ class TopicViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		{
 			self.performSegue(withIdentifier: "logOut", sender: self)
 		} else {
-			getTopics()
+			getTopics(page: 1)
 		}
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.estimatedRowHeight = 100
@@ -36,6 +48,7 @@ class TopicViewController: UIViewController, UITableViewDelegate, UITableViewDat
 	}
 	
 	@IBAction func plusBtn(_ sender: UIButton) {
+	
 		performSegue(withIdentifier: "msgSegue", sender: sender.tag)
 	}
 	override func viewDidLoad() {
@@ -44,6 +57,11 @@ class TopicViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		if (session.string(forKey: "access_token") == nil || session.string(forKey: "token") == nil)
 		{
 			self.performSegue(withIdentifier: "logOut", sender: self)
+		}
+		if (self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height))
+		{
+			print("asdfasdfsadfsdafasdfasf")
+			// Don't animate
 		}
 ////			print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 ////			print(session.string(forKey: "access_token"))
@@ -61,9 +79,9 @@ class TopicViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Dispose of any resources that can be recreated.
     }
 	
-	func getTopics() {
+	func getTopics(page: Int) {
 		let session = UserDefaults.standard
-		let url = URL(string: "https://api.intra.42.fr/v2/topics")
+		let url = URL(string: "https://api.intra.42.fr/v2/topics?page=\(page)")
 		let request = NSMutableURLRequest(url: url!)
 		request.httpMethod = "GET"
 		print(session.string(forKey: "access_token")!)
@@ -84,9 +102,7 @@ class TopicViewController: UIViewController, UITableViewDelegate, UITableViewDat
 				do {
 					print(d)
 					if let dic : [NSDictionary] = try JSONSerialization.jsonObject(with: d, options: .mutableContainers) as? [NSDictionary] {
-//						print("in gsetsdfasdfsadfasdfasdfsadfasfas")
-//												print(dic[0])
-						
+
 						DispatchQueue.main.async {
 							for value in dic {
 								let author: NSDictionary = (value["author"] as? NSDictionary)!
@@ -139,8 +155,12 @@ class TopicViewController: UIViewController, UITableViewDelegate, UITableViewDat
 			if let destinationView = segue.destination as? MsgViewController {
 				if let id = sender as? Int {
 					destinationView.topic_id = self.topics[id].topicId
+					print(self.topics[id].topicId)
 				}
 			}
+		}
+		if segue.identifier == "addTopic" {
+			
 		}
 	}
 }

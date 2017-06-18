@@ -14,13 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let UID = "d3b16514976a970424adee2ee2460a91a2a484f3e70ac70ed6c6ce4316cbe8a4"
     let SECRET = "4ad66ff5c67dbc8f51a86d724da7438d1b3e2543f3a1e63d39fc9f5f8454284c"
-//    var code: String?
-    var access_token: String?
-    var token: String?
+	var access_token: String? {
+		didSet {
+			getUserId()
+		}
+	}
+	var token: String?
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let code = url.absoluteString.components(separatedBy: "&")[0].components(separatedBy: "=")[1]
-//        self.code = code
         getAccessToken(code: code)
         return true
     }
@@ -78,7 +80,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             session.set(dic.value(forKey: "access_token"), forKey: "access_token")
                             session.synchronize()
                         }
-//                        print(dic)
                     }
                 } catch (let err) {
                     print (err)
@@ -87,6 +88,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         task.resume()
     }
-
+	
+	func getUserId() {
+		let url = URL(string: "https://api.intra.42.fr/v2/me")
+		let session = UserDefaults.standard
+		let request = NSMutableURLRequest(url: url!)
+		request.httpMethod = "GET"
+		let token = self.access_token!
+		request.setValue("application/x-www-form-urlencoded;charset=UTF-8", forHTTPHeaderField: "Content-Type")
+		request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+		
+		let task = URLSession.shared.dataTask(with: request as URLRequest) {
+			(data, response, error) in
+			if let err = error {
+				print(err)
+				session.removeObject(forKey: "access_token")
+				session.removeObject(forKey: "token")
+				session.synchronize()
+			}
+			else if let d = data {
+				do {
+					if let dic : NSDictionary = try JSONSerialization.jsonObject(with: d, options: .mutableContainers) as? NSDictionary {
+						session.set(dic.value(forKey: "id"), forKey: "author_id")
+						session.synchronize()
+						print("AUTHOR_ID == \(session.string(forKey: "author_id"))")
+					}
+				} catch (let err) {
+					print(err)
+				}
+			}
+		}
+		task.resume()
+	}
 }
 
