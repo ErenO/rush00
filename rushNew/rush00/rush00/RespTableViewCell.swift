@@ -1,5 +1,5 @@
 //
-//  MsgTableViewCell.swift
+//  RespTableViewCell.swift
 //  rush00
 //
 //  Created by Samuel TOUSSAY on 6/18/17.
@@ -8,14 +8,11 @@
 
 import UIKit
 
-class MsgTableViewCell: UITableViewCell {
+class RespTableViewCell: UITableViewCell {
 
-    
-    @IBOutlet weak var login: UILabel!
-    @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var txt: UITextView!
-	@IBOutlet weak var respBtn: UIButton!
-    
+	@IBOutlet weak var login: UILabel!
+	@IBOutlet weak var date: UILabel!
+	@IBOutlet weak var txt: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

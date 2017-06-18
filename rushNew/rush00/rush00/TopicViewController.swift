@@ -26,6 +26,13 @@ class TopicViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		} else {
 			getTopics()
 		}
+		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.estimatedRowHeight = 100
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.estimatedRowHeight = 100
 	}
 	
 	@IBAction func plusBtn(_ sender: UIButton) {
@@ -132,7 +139,6 @@ class TopicViewController: UIViewController, UITableViewDelegate, UITableViewDat
 			if let destinationView = segue.destination as? MsgViewController {
 				if let id = sender as? Int {
 					destinationView.topic_id = self.topics[id].topicId
-					print(">>>>>sender \(id)<<<<<")
 				}
 			}
 		}

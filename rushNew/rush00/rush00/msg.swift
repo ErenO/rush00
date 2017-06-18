@@ -12,4 +12,5 @@ struct msg {
     let login: String
     let msg: String
     let date: String
+	let msgId: Int
 }

@@ -15,14 +15,28 @@ class MsgViewController: UIViewController, UITableViewDataSource, UITableViewDel
 	var topic_id : Int?
     override func viewDidLoad() {
         super.viewDidLoad()
-		print(">>>>\(self.topic_id ?? 0)<<<<")
+		getMessages(topicId: self.topic_id!)
+
+//		print(">>>>\(self.topic_id ?? 0)<<<<")
         // Do any additional setup after loading the view.
     }
 	
-	override func viewDidAppear(_ animated: Bool) {
-		getMessages(topicId: self.topic_id!)
+	@IBAction func respBtn(_ sender: UIButton) {
+		if sender.tag != 0 {
+			performSegue(withIdentifier: "respMsg", sender: sender.tag)
+		}
 	}
+//	override func viewDidAppear(_ animated: Bool) {
+////		getMessages(topicId: self.topic_id!)
+//		tableView.rowHeight = UITableViewAutomaticDimension
+//		tableView.estimatedRowHeight = 100
+//	}
 
+	override func viewWillAppear(_ animated: Bool) {
+		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.estimatedRowHeight = 100
+	}
+	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -32,23 +46,19 @@ class MsgViewController: UIViewController, UITableViewDataSource, UITableViewDel
 		return self.message.count
 	}
 	
-//	func numberOfSections(in tableView: UITableView) -> Int {
-//		return 1
-//	}
-//	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//		print(tableView.dequeueReusableCell(withIdentifier: "msgCell", for: indexPath) as? MsgTableViewCell)
 		if let cell = tableView.dequeueReusableCell(withIdentifier: "msgCell", for: indexPath) as? MsgTableViewCell {
-//			DispatchQueue.main.async {
+			DispatchQueue.main.async {
 				cell.login.text = self.message[indexPath.row].login
 				cell.date.text = self.message[indexPath.row].date
 				cell.txt.text = self.message[indexPath.row].msg
-				print(">>>>>\(cell)<<<<<")
-//			}
+				cell.respBtn.tag = indexPath.row
+			}
 			return cell
 		}
 		return UITableViewCell()
 	}
+	
 	
 	func getMessages(topicId: Int) {
 		let session = UserDefaults.standard
@@ -63,7 +73,6 @@ class MsgViewController: UIViewController, UITableViewDataSource, UITableViewDel
 		
 		let task = URLSession.shared.dataTask(with: request as URLRequest) {
 			(data, response, error) in
-			print(response ?? "response is nil")
 			if let err = error {
 				print(err)
 				session.removeObject(forKey: "access_token")
@@ -72,21 +81,14 @@ class MsgViewController: UIViewController, UITableViewDataSource, UITableViewDel
 			}
 			else if let d = data {
 				do {
-					print(d)
-					print("<<<<<<in getmsg >>>>>>>>>>>>>>>>>>>>>")
 					if let dic : [NSDictionary] = try JSONSerialization.jsonObject(with: d, options: .mutableContainers) as? [NSDictionary] {
 						
-//						print(dic)
 						DispatchQueue.main.async {
 							for value in dic {
 								let author: NSDictionary = (value["author"] as? NSDictionary)!
-								//								print(value["created_at"] ?? "NC")
-								//								print(value["name"])
-//								print((author["login"] as? String)!)
-//								print((value["created_at"] as? String)!)
-//								print((value["content"] as? String)!)
+								print("id msg == \(value["id"])")
 								
-								let elem = msg(login: (author["login"] as? String)!, msg: (value["created_at"] as? String)!, date: (value["content"] as? String)!)
+								let elem = msg(login: (author["login"] as? String)!, msg:(value["content"] as? String)!, date: (value["created_at"] as? String)!, msgId: (value["id"] as? Int)!)
 								self.message.append(elem)
 								self.tableView.reloadData()
 //								print(">>>\(self.message)<<<<")
@@ -103,6 +105,19 @@ class MsgViewController: UIViewController, UITableViewDataSource, UITableViewDel
 		}
 		task.resume()
 		
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "respMsg" {
+			if let destinationView = segue.destination as? RespViewController {
+				if let id = sender as? Int {
+					print(">>>>>>IDDDDDD>>>\(id)<<<<")
+					if id != 0 {
+						destinationView.msgId = self.message[id].msgId
+					}
+				}
+			}
+		}
 	}
 
     /*
