@@ -23,7 +23,12 @@ class ViewController: UIViewController {
 	}
 	
     @IBAction func connectBtn(_ sender: Any) {
+		let session = UserDefaults.standard
+
         authenticateUser()
+		if session.string(forKey: "access_token") != nil {
+			performSegue(withIdentifier: "auth", sender: self)
+		}
     }
 	
 	override func viewDidAppear(_ animated: Bool) {

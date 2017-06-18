@@ -13,4 +13,5 @@ struct topic {
     let login: String
     let date: String
     let title: String
+	let topicId: Int
 }

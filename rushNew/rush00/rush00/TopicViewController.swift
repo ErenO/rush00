@@ -10,8 +10,12 @@ import UIKit
 
 class TopicViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var topics: [topic] = []
-    
+	var topics: [topic] = [] {
+		didSet {
+			getMessages(topicId: topics[0].topicId)
+		}
+	}
+		
 	@IBOutlet weak var tableView: UITableView!
 	@IBAction func logoutBtn(_ sender: Any) {
 		print("heldgflkfg")
@@ -21,11 +25,35 @@ class TopicViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		session.synchronize()
 		self.performSegue(withIdentifier: "logOut", sender: self)
 	}
-	
+	override func viewDidAppear(_ animated: Bool) {
+		let session = UserDefaults.standard
+
+		if (session.string(forKey: "access_token") == nil || session.string(forKey: "token") == nil)
+		{
+			self.performSegue(withIdentifier: "logOut", sender: self)
+		} else {
+			print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+			print(session.string(forKey: "access_token"))
+			print(session.string(forKey: "token"))
+			print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+		}
+	}
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
-		getTopics()
+		let session = UserDefaults.standard
+		if (session.string(forKey: "access_token") == nil || session.string(forKey: "token") == nil)
+		{
+			self.performSegue(withIdentifier: "logOut", sender: self)
+		} else {
+			print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+			print(session.string(forKey: "access_token"))
+			print(session.string(forKey: "token"))
+			print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+
+			getTopics()
+			print(topics)
+		}
 //		tableView.delegate = self
 //		tableView.dataSource = self
         // Do any additional setup after loading the view.
@@ -36,6 +64,77 @@ class TopicViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Dispose of any resources that can be recreated.
     }
 	
+	func getMessages(topicId: Int) {
+		print("<<<<<<in getmsg >>>>>>>>>>>>>>>>>>>>>")
+
+		let session = UserDefaults.standard
+		let url = URL(string: "/v2/topics/:\(topicId)/messages")
+		let request = NSMutableURLRequest(url: url!)
+
+		request.httpMethod = "GET"
+
+		let token = session.string(forKey: "access_token")!
+		request.setValue("application/x-www-form-urlencoded;charset=UTF-8", forHTTPHeaderField: "Content-Type")
+		request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+		
+		let task = URLSession.shared.dataTask(with: request as URLRequest) {
+			(data, response, error) in
+			print(response ?? "response is nil")
+			if let err = error {
+				print(err)
+				session.removeObject(forKey: "access_token")
+				session.removeObject(forKey: "token")
+				session.synchronize()
+				self.performSegue(withIdentifier: "logOut", sender: self)
+			}
+			else if let d = data {
+				do {
+					print(d)
+					print("<<<<<<in getmsg >>>>>>>>>>>>>>>>>>>>>")
+					if let dic : NSDictionary = try JSONSerialization.jsonObject(with: d, options: .mutableContainers) as? NSDictionary {
+						
+						print(dic)
+//						for value in dic {
+							//							print(topic["author"] ?? "NC")
+//							let author: NSDictionary = (value["author"] as? NSDictionary)!
+							//							print(author["login"])
+//							print(value["created_at"] ?? "NC")
+//							print(value["name"])
+							//							let msg: NSDictionary = (dic["name"] as? NSDictionary)!
+							//							let content: NSDictionary = (msg["content"] as? NSDictionary!)!
+							//							let str = content["html"] as! String
+							//
+							//							let dateFormatter = DateFormatter()
+							//							dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"//"EEE MMM dd HH:mm:ss Z yyyy"
+							//							let strDate = dateFormatter.date(from: value["created_at"] as! String)
+							//							dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+							//							let strDateF = dateFormatter.string(from: strDate!)
+							//							print(strDate)
+							//							print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+							//
+							//							print(strDateF)
+							//							print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+							
+							//							print(str.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil))
+//							let elem = msg(login: <#T##String#>, msg: <#T##String#>, date: <#T##String#>)
+//							self.topics.append(elem)
+//							self.tableView.reloadData()
+							//							print(topic["message"] ?? "NC")
+//						}
+						//						session.set(dic.value(forKey: "access_token"), forKey: "token")
+						//						session.synchronize()
+					}
+				} catch (let err) {
+					session.removeObject(forKey: "access_token")
+					session.removeObject(forKey: "token")
+					session.synchronize()
+					self.performSegue(withIdentifier: "logOut", sender: self)
+				}
+			}
+		}
+		task.resume()
+
+	}
 	
 	func getTopics() {
 		let session = UserDefaults.standard
@@ -61,37 +160,17 @@ class TopicViewController: UIViewController, UITableViewDelegate, UITableViewDat
 				do {
 					print(d)
 					if let dic : [NSDictionary] = try JSONSerialization.jsonObject(with: d, options: .mutableContainers) as? [NSDictionary] {
-						
+						print("in gsetsdfasdfsadfasdfasdfsadfasfas")
 												print(dic[0])
 						for value in dic {
-							//							print(topic["author"] ?? "NC")
 							let author: NSDictionary = (value["author"] as? NSDictionary)!
-//							print(author["login"])
 							print(value["created_at"] ?? "NC")
 							print(value["name"])
-//							let msg: NSDictionary = (dic["name"] as? NSDictionary)!
-//							let content: NSDictionary = (msg["content"] as? NSDictionary!)!
-//							let str = content["html"] as! String
-//							
-//							let dateFormatter = DateFormatter()
-//							dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"//"EEE MMM dd HH:mm:ss Z yyyy"
-//							let strDate = dateFormatter.date(from: value["created_at"] as! String)
-//							dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-//							let strDateF = dateFormatter.string(from: strDate!)
-//							print(strDate)
-//							print("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
-//							
-//							print(strDateF)
-//							print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-
-//							print(str.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil))
-							let elem = topic(login: (author["login"] as? String)!, date: (value["created_at"] as? String)!, title: (value["name"] as? String)!)
+//							let elem = topic(login: (author["login"] as? String)!, date: (value["created_at"] as? String)!, title: (value["name"] as? String)!, topicId: (value["id"] as? Int)! )
+							let elem = topic(login: (author["login"] as? String)!, date: (value["created_at"] as? String)!, title: (value["name"] as? String)!, topicId: (value["id"] as? Int)!)
 							self.topics.append(elem)
 							self.tableView.reloadData()
-							//							print(topic["message"] ?? "NC")
 						}
-						//						session.set(dic.value(forKey: "access_token"), forKey: "token")
-						//						session.synchronize()
 					}
 				} catch (let err) {
 					session.removeObject(forKey: "access_token")
@@ -103,10 +182,15 @@ class TopicViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		}
 		task.resume()
 	}
+
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self.topics.count
 	}
 	
+//	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//		self.performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
+//	}
+//	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if let cell = tableView.dequeueReusableCell(withIdentifier: "topicCell", for: indexPath) as? TopicTableViewCell {
 			cell.login.text = self.topics[indexPath.row].login
@@ -116,8 +200,15 @@ class TopicViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		}
 		return UITableViewCell()
 	}
+
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "logOut" {}
+		
+		if segue.identifier == "msgSegue" {
+			if let destinationView = segue.destination as? MsgViewController {
+				
+			}
+		}
 	}
     /*
     // MARK: - Navigation
