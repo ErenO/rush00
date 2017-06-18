@@ -10,6 +10,11 @@ import UIKit
 
 class MsgTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var login: UILabel!
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var txt: UITextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

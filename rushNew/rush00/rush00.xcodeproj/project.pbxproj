@@ -16,6 +16,10 @@
 		46EC565B1EF64F8300A2FB67 /* rush00UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC565A1EF64F8300A2FB67 /* rush00UITests.swift */; };
 		46EC56691EF6559000A2FB67 /* msg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC56681EF6559000A2FB67 /* msg.swift */; };
 		46EC566B1EF6559C00A2FB67 /* topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC566A1EF6559C00A2FB67 /* topic.swift */; };
+		46EC566D1EF6759200A2FB67 /* AddMsgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC566C1EF6759200A2FB67 /* AddMsgViewController.swift */; };
+		46EC566F1EF675A800A2FB67 /* EditMsgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC566E1EF675A800A2FB67 /* EditMsgViewController.swift */; };
+		46EC56711EF675BC00A2FB67 /* EditTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC56701EF675BC00A2FB67 /* EditTopicViewController.swift */; };
+		46EC56731EF675DF00A2FB67 /* AddTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC56721EF675DF00A2FB67 /* AddTopicViewController.swift */; };
 		87DACB811EF66A2C00E9C900 /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DACB801EF66A2C00E9C900 /* TopicViewController.swift */; };
 		87DACB831EF66A4C00E9C900 /* TopicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DACB821EF66A4C00E9C900 /* TopicTableViewCell.swift */; };
 		87DACB851EF66A6200E9C900 /* MsgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DACB841EF66A6200E9C900 /* MsgTableViewCell.swift */; };
@@ -55,6 +59,10 @@
 		46EC565C1EF64F8300A2FB67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46EC56681EF6559000A2FB67 /* msg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = msg.swift; sourceTree = "<group>"; };
 		46EC566A1EF6559C00A2FB67 /* topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = topic.swift; sourceTree = "<group>"; };
+		46EC566C1EF6759200A2FB67 /* AddMsgViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMsgViewController.swift; sourceTree = "<group>"; };
+		46EC566E1EF675A800A2FB67 /* EditMsgViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMsgViewController.swift; sourceTree = "<group>"; };
+		46EC56701EF675BC00A2FB67 /* EditTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditTopicViewController.swift; path = ../EditTopicViewController.swift; sourceTree = "<group>"; };
+		46EC56721EF675DF00A2FB67 /* AddTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTopicViewController.swift; sourceTree = "<group>"; };
 		87DACB801EF66A2C00E9C900 /* TopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
 		87DACB821EF66A4C00E9C900 /* TopicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicTableViewCell.swift; sourceTree = "<group>"; };
 		87DACB841EF66A6200E9C900 /* MsgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgTableViewCell.swift; sourceTree = "<group>"; };
@@ -109,6 +117,7 @@
 		46EC56391EF64F8300A2FB67 /* rush00 */ = {
 			isa = PBXGroup;
 			children = (
+				46EC56701EF675BC00A2FB67 /* EditTopicViewController.swift */,
 				46EC563A1EF64F8300A2FB67 /* AppDelegate.swift */,
 				46EC563C1EF64F8300A2FB67 /* ViewController.swift */,
 				46EC563E1EF64F8300A2FB67 /* Main.storyboard */,
@@ -121,6 +130,9 @@
 				87DACB821EF66A4C00E9C900 /* TopicTableViewCell.swift */,
 				87DACB841EF66A6200E9C900 /* MsgTableViewCell.swift */,
 				87DACB861EF66A7600E9C900 /* MsgViewController.swift */,
+				46EC566C1EF6759200A2FB67 /* AddMsgViewController.swift */,
+				46EC566E1EF675A800A2FB67 /* EditMsgViewController.swift */,
+				46EC56721EF675DF00A2FB67 /* AddTopicViewController.swift */,
 			);
 			path = rush00;
 			sourceTree = "<group>";
@@ -277,12 +289,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46EC56711EF675BC00A2FB67 /* EditTopicViewController.swift in Sources */,
 				87DACB871EF66A7600E9C900 /* MsgViewController.swift in Sources */,
+				46EC56731EF675DF00A2FB67 /* AddTopicViewController.swift in Sources */,
 				46EC563D1EF64F8300A2FB67 /* ViewController.swift in Sources */,
+				46EC566F1EF675A800A2FB67 /* EditMsgViewController.swift in Sources */,
 				87DACB851EF66A6200E9C900 /* MsgTableViewCell.swift in Sources */,
 				87DACB831EF66A4C00E9C900 /* TopicTableViewCell.swift in Sources */,
 				46EC566B1EF6559C00A2FB67 /* topic.swift in Sources */,
 				87DACB811EF66A2C00E9C900 /* TopicViewController.swift in Sources */,
+				46EC566D1EF6759200A2FB67 /* AddMsgViewController.swift in Sources */,
 				46EC563B1EF64F8300A2FB67 /* AppDelegate.swift in Sources */,
 				46EC56691EF6559000A2FB67 /* msg.swift in Sources */,
 			);

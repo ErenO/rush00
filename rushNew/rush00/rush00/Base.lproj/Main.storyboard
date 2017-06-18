@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eHF-No-njP">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eHF-No-njP">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -68,7 +68,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="116"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dBm-lt-AbH" id="cf9-Hj-3MG">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="115"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="115.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yB-Oo-3xU">
@@ -137,7 +137,7 @@
         <!--Edit Topic-->
         <scene sceneID="l2O-Jm-CT5">
             <objects>
-                <viewController id="8N2-bu-0wQ" sceneMemberID="viewController">
+                <viewController id="8N2-bu-0wQ" customClass="EditTopicViewController" customModule="rush00" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IjM-Vn-VUU"/>
                         <viewControllerLayoutGuide type="bottom" id="M3w-Xn-8qP"/>
@@ -145,7 +145,21 @@
                     <view key="view" contentMode="scaleToFill" id="ihn-MC-NCs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Edit Topic" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="86l-lx-a36">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="86l-lx-a36" firstAttribute="leading" secondItem="ihn-MC-NCs" secondAttribute="leading" id="EfO-mr-AI8"/>
+                            <constraint firstItem="86l-lx-a36" firstAttribute="top" secondItem="ihn-MC-NCs" secondAttribute="top" id="U5T-JU-kAp"/>
+                            <constraint firstItem="M3w-Xn-8qP" firstAttribute="top" secondItem="86l-lx-a36" secondAttribute="bottom" id="nFV-sh-Wwr"/>
+                            <constraint firstAttribute="trailing" secondItem="86l-lx-a36" secondAttribute="trailing" id="yPW-bX-q9l"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Topic" id="7Pp-xz-gVC">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="u0I-cZ-SWy"/>
@@ -153,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6jV-7d-504" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2916" y="200"/>
+            <point key="canvasLocation" x="2915.625" y="200"/>
         </scene>
         <!--Messages-->
         <scene sceneID="nEH-Ma-cSa">
@@ -167,17 +181,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="81" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QRF-Ks-iQC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="93" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QRF-Ks-iQC">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="81" id="87U-Kc-sHM" customClass="MsgTableViewCell" customModule="rush00" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="81"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="93" id="87U-Kc-sHM" customClass="MsgTableViewCell" customModule="rush00" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="87U-Kc-sHM" id="NDO-0W-NVB">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="92.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugx-mI-FJ4">
+                                                    <rect key="frame" x="8" y="10" width="145" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="QzR-Dr-izy"/>
+                                                        <constraint firstAttribute="width" constant="145" id="zcV-AM-XJg"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TRR-70-iFW">
+                                                    <rect key="frame" x="8" y="36" width="304" height="46"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIz-OL-tVG">
+                                                    <rect key="frame" x="161" y="10" width="151" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="151" id="RSq-JT-xws"/>
+                                                        <constraint firstAttribute="height" constant="21" id="ofP-x0-dMP"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="TRR-70-iFW" firstAttribute="top" secondItem="rIz-OL-tVG" secondAttribute="bottom" constant="5" id="7MR-ge-cH7"/>
+                                                <constraint firstItem="Ugx-mI-FJ4" firstAttribute="leading" secondItem="NDO-0W-NVB" secondAttribute="leadingMargin" id="B5s-sH-RXb"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="TRR-70-iFW" secondAttribute="bottom" constant="2.5" id="E1C-O6-JgN"/>
+                                                <constraint firstItem="TRR-70-iFW" firstAttribute="top" secondItem="Ugx-mI-FJ4" secondAttribute="bottom" constant="5" id="Iax-hb-xlo"/>
+                                                <constraint firstItem="TRR-70-iFW" firstAttribute="trailing" secondItem="NDO-0W-NVB" secondAttribute="trailingMargin" id="KAx-40-fvV"/>
+                                                <constraint firstItem="rIz-OL-tVG" firstAttribute="top" secondItem="NDO-0W-NVB" secondAttribute="topMargin" constant="2" id="LP7-ZN-Tox"/>
+                                                <constraint firstItem="rIz-OL-tVG" firstAttribute="trailing" secondItem="NDO-0W-NVB" secondAttribute="trailingMargin" id="UZM-TN-k22"/>
+                                                <constraint firstItem="TRR-70-iFW" firstAttribute="top" secondItem="rIz-OL-tVG" secondAttribute="bottom" constant="5" id="XXx-in-Zyw"/>
+                                                <constraint firstItem="TRR-70-iFW" firstAttribute="leading" secondItem="NDO-0W-NVB" secondAttribute="leadingMargin" id="jfs-Za-PJl"/>
+                                                <constraint firstItem="Ugx-mI-FJ4" firstAttribute="top" secondItem="NDO-0W-NVB" secondAttribute="topMargin" constant="2" id="t5o-oB-YUW"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="date" destination="rIz-OL-tVG" id="MbH-3X-jVo"/>
+                                            <outlet property="login" destination="Ugx-mI-FJ4" id="xH7-db-aKh"/>
+                                            <outlet property="txt" destination="TRR-70-iFW" id="bgX-Bl-ZHX"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -206,7 +265,7 @@
         <!--Add Messages-->
         <scene sceneID="528-P9-vDb">
             <objects>
-                <viewController id="I1G-kn-SPh" sceneMemberID="viewController">
+                <viewController id="I1G-kn-SPh" customClass="AddMsgViewController" customModule="rush00" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KOk-BK-dJS"/>
                         <viewControllerLayoutGuide type="bottom" id="Yim-mE-hdI"/>
@@ -214,7 +273,21 @@
                     <view key="view" contentMode="scaleToFill" id="XZP-KJ-RLS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Add Messages" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="s9G-IL-zDR">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="s9G-IL-zDR" firstAttribute="top" secondItem="XZP-KJ-RLS" secondAttribute="top" id="JEm-aX-oWz"/>
+                            <constraint firstAttribute="trailing" secondItem="s9G-IL-zDR" secondAttribute="trailing" id="KG2-dj-NSq"/>
+                            <constraint firstItem="s9G-IL-zDR" firstAttribute="leading" secondItem="XZP-KJ-RLS" secondAttribute="leading" id="p0S-Ny-uqI"/>
+                            <constraint firstItem="Yim-mE-hdI" firstAttribute="top" secondItem="s9G-IL-zDR" secondAttribute="bottom" id="qFU-z5-hdH"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Messages" id="TLl-PK-kKb">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="H9R-pF-Koa"/>
@@ -222,12 +295,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="80G-gd-C8j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3872" y="-668"/>
+            <point key="canvasLocation" x="3871.875" y="-668.75"/>
         </scene>
         <!--Edit Messages-->
         <scene sceneID="Ydm-h2-3cK">
             <objects>
-                <viewController id="pSK-ZY-bo0" sceneMemberID="viewController">
+                <viewController id="pSK-ZY-bo0" customClass="EditMsgViewController" customModule="rush00" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CCw-k9-qMk"/>
                         <viewControllerLayoutGuide type="bottom" id="W7e-0D-oEJ"/>
@@ -235,7 +308,21 @@
                     <view key="view" contentMode="scaleToFill" id="4AZ-21-ll3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Edit Messages" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6zo-7R-2Xr">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6zo-7R-2Xr" firstAttribute="top" secondItem="4AZ-21-ll3" secondAttribute="top" id="2XS-S8-Bdy"/>
+                            <constraint firstItem="6zo-7R-2Xr" firstAttribute="leading" secondItem="4AZ-21-ll3" secondAttribute="leading" id="esI-Qs-YKg"/>
+                            <constraint firstItem="W7e-0D-oEJ" firstAttribute="top" secondItem="6zo-7R-2Xr" secondAttribute="bottom" id="rMN-uq-wkA"/>
+                            <constraint firstAttribute="trailing" secondItem="6zo-7R-2Xr" secondAttribute="trailing" id="skz-c5-Tji"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Messages" id="B9h-hx-3d3">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="1Qe-v6-Gmm"/>
@@ -243,7 +330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yMa-Q1-I18" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3846" y="29"/>
+            <point key="canvasLocation" x="3845.625" y="28.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MTN-Y4-NIR">
@@ -266,7 +353,7 @@
         <!--Add Topic-->
         <scene sceneID="JPo-uZ-xxl">
             <objects>
-                <viewController id="Y9w-Kx-z7j" sceneMemberID="viewController">
+                <viewController id="Y9w-Kx-z7j" customClass="AddTopicViewController" customModule="rush00" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rAd-8p-oJq"/>
                         <viewControllerLayoutGuide type="bottom" id="eGM-e0-qo4"/>
@@ -274,7 +361,21 @@
                     <view key="view" contentMode="scaleToFill" id="geC-YE-f7q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Add Topic" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="s2N-mY-AKJ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eGM-e0-qo4" firstAttribute="top" secondItem="s2N-mY-AKJ" secondAttribute="bottom" id="3rM-ZH-JKd"/>
+                            <constraint firstAttribute="trailing" secondItem="s2N-mY-AKJ" secondAttribute="trailing" id="5Sn-Ub-UTH"/>
+                            <constraint firstItem="s2N-mY-AKJ" firstAttribute="top" secondItem="geC-YE-f7q" secondAttribute="top" id="EX9-jW-hVl"/>
+                            <constraint firstItem="s2N-mY-AKJ" firstAttribute="leading" secondItem="geC-YE-f7q" secondAttribute="leading" id="KhH-e7-IMq"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Topic" id="8qc-T9-KNp">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="5SZ-FG-2Hr"/>
@@ -282,7 +383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vuD-Bf-lOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2916" y="944"/>
+            <point key="canvasLocation" x="2915.625" y="943.75"/>
         </scene>
     </scenes>
 </document>

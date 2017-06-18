@@ -10,6 +10,8 @@ import UIKit
 
 class TopicViewController: UIViewController {
 
+    var topics: [topic] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
