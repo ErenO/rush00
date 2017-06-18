@@ -17,10 +17,31 @@ class ViewController: UIViewController {
     @IBAction func connectBtn(_ sender: Any) {
         authenticateUser()
     }
+	
+	override func viewDidAppear(_ animated: Bool) {
+		let session = UserDefaults.standard
+		print("before2")
+		print(session.string(forKey: "access_token"))
+		print("after2")
+		if session.string(forKey: "access_token") != nil {
+			performSegue(withIdentifier: "auth", sender: self)
+		}
+
+	}
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         getToken()
+
+		let session = UserDefaults.standard
+		print("before1")
+		print(session.string(forKey: "access_token"))
+		print("after1")
+		if session.string(forKey: "access_token") != nil {
+			performSegue(withIdentifier: "auth", sender: self)
+		}
+
 //        authenticateUser()
     }
 
@@ -37,8 +58,6 @@ class ViewController: UIViewController {
         } else {
             print("url error")
         }
-        let session = UserDefaults.standard
-        print(session.string(forKey: "token"))
     }
     
     func getToken() {
@@ -71,5 +90,10 @@ class ViewController: UIViewController {
         }
         task.resume()
     }
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "auth" {
+			
+		}
+	}
 }
-

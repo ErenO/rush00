@@ -12,9 +12,8 @@ struct msg: CustomStringConvertible {
     let login: String
     let msg: String
     let date: String
-    let title: String
-    
+	
     var description: String {
-        return  "login \(login) msg \(msg) title \(title) date \(date)"
+        return  "login \(login) msg \(msg) date \(date)"
     }
 }

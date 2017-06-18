@@ -16,6 +16,10 @@
 		46EC565B1EF64F8300A2FB67 /* rush00UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC565A1EF64F8300A2FB67 /* rush00UITests.swift */; };
 		46EC56691EF6559000A2FB67 /* msg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC56681EF6559000A2FB67 /* msg.swift */; };
 		46EC566B1EF6559C00A2FB67 /* topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC566A1EF6559C00A2FB67 /* topic.swift */; };
+		87DACB811EF66A2C00E9C900 /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DACB801EF66A2C00E9C900 /* TopicViewController.swift */; };
+		87DACB831EF66A4C00E9C900 /* TopicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DACB821EF66A4C00E9C900 /* TopicTableViewCell.swift */; };
+		87DACB851EF66A6200E9C900 /* MsgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DACB841EF66A6200E9C900 /* MsgTableViewCell.swift */; };
+		87DACB871EF66A7600E9C900 /* MsgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DACB861EF66A7600E9C900 /* MsgViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,10 @@
 		46EC565C1EF64F8300A2FB67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46EC56681EF6559000A2FB67 /* msg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = msg.swift; sourceTree = "<group>"; };
 		46EC566A1EF6559C00A2FB67 /* topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = topic.swift; sourceTree = "<group>"; };
+		87DACB801EF66A2C00E9C900 /* TopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
+		87DACB821EF66A4C00E9C900 /* TopicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicTableViewCell.swift; sourceTree = "<group>"; };
+		87DACB841EF66A6200E9C900 /* MsgTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgTableViewCell.swift; sourceTree = "<group>"; };
+		87DACB861EF66A7600E9C900 /* MsgViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +117,10 @@
 				46EC56461EF64F8300A2FB67 /* Info.plist */,
 				46EC56681EF6559000A2FB67 /* msg.swift */,
 				46EC566A1EF6559C00A2FB67 /* topic.swift */,
+				87DACB801EF66A2C00E9C900 /* TopicViewController.swift */,
+				87DACB821EF66A4C00E9C900 /* TopicTableViewCell.swift */,
+				87DACB841EF66A6200E9C900 /* MsgTableViewCell.swift */,
+				87DACB861EF66A7600E9C900 /* MsgViewController.swift */,
 			);
 			path = rush00;
 			sourceTree = "<group>";
@@ -265,8 +277,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87DACB871EF66A7600E9C900 /* MsgViewController.swift in Sources */,
 				46EC563D1EF64F8300A2FB67 /* ViewController.swift in Sources */,
+				87DACB851EF66A6200E9C900 /* MsgTableViewCell.swift in Sources */,
+				87DACB831EF66A4C00E9C900 /* TopicTableViewCell.swift in Sources */,
 				46EC566B1EF6559C00A2FB67 /* topic.swift in Sources */,
+				87DACB811EF66A2C00E9C900 /* TopicViewController.swift in Sources */,
 				46EC563B1EF64F8300A2FB67 /* AppDelegate.swift in Sources */,
 				46EC56691EF6559000A2FB67 /* msg.swift in Sources */,
 			);
@@ -423,6 +439,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = rush00/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = swift.rush00;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -435,6 +452,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = rush00/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = swift.rush00;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -515,6 +533,7 @@
 				46EC56611EF64F8300A2FB67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		46EC56621EF64F8300A2FB67 /* Build configuration list for PBXNativeTarget "rush00Tests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +542,7 @@
 				46EC56641EF64F8300A2FB67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		46EC56651EF64F8300A2FB67 /* Build configuration list for PBXNativeTarget "rush00UITests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +551,7 @@
 				46EC56671EF64F8300A2FB67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

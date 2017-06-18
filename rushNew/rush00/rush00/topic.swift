@@ -11,11 +11,10 @@ import Foundation
 
 struct topic: CustomStringConvertible {
     let login: String
-    let msg: String
     let date: String
     let title: String
     
     var description: String {
-        return  "login \(login) msg \(msg) title \(title) date \(date)"
+        return  "login \(login) title \(title) date \(date)"
     }
 }
