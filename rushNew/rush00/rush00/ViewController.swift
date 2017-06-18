@@ -14,14 +14,6 @@ class ViewController: UIViewController {
     let SECRET = "4ad66ff5c67dbc8f51a86d724da7438d1b3e2543f3a1e63d39fc9f5f8454284c"
     var token: String?
 	
-	
-	@IBAction func unwindtoConnect(segue: UIStoryboardSegue) {
-		let session = UserDefaults.standard
-		session.removeObject(forKey: "access_token")
-		session.removeObject(forKey: "token")
-		session.synchronize()
-	}
-	
     @IBAction func connectBtn(_ sender: Any) {
 		let session = UserDefaults.standard
 

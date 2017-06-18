@@ -13,6 +13,7 @@ class TopicTableViewCell: UITableViewCell {
 	@IBOutlet weak var login: UILabel!
 	@IBOutlet weak var date: UILabel!
 	@IBOutlet weak var title: UITextView!
+	@IBOutlet weak var btn: UIButton!
 	
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -8,12 +8,8 @@
 
 import Foundation
 
-struct msg: CustomStringConvertible {
+struct msg {
     let login: String
     let msg: String
     let date: String
-	
-    var description: String {
-        return  "login \(login) msg \(msg) date \(date)"
-    }
 }
