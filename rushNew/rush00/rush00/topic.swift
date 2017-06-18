@@ -9,12 +9,8 @@
 import Foundation
 
 
-struct topic: CustomStringConvertible {
+struct topic {
     let login: String
     let date: String
     let title: String
-    
-    var description: String {
-        return  "login \(login) title \(title) date \(date)"
-    }
 }

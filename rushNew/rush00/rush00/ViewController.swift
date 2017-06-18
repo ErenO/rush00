@@ -13,7 +13,15 @@ class ViewController: UIViewController {
     let UID = "d3b16514976a970424adee2ee2460a91a2a484f3e70ac70ed6c6ce4316cbe8a4"
     let SECRET = "4ad66ff5c67dbc8f51a86d724da7438d1b3e2543f3a1e63d39fc9f5f8454284c"
     var token: String?
-    
+	
+	
+	@IBAction func unwindtoConnect(segue: UIStoryboardSegue) {
+		let session = UserDefaults.standard
+		session.removeObject(forKey: "access_token")
+		session.removeObject(forKey: "token")
+		session.synchronize()
+	}
+	
     @IBAction func connectBtn(_ sender: Any) {
         authenticateUser()
     }
@@ -28,19 +36,21 @@ class ViewController: UIViewController {
 		}
 
 	}
-
+	
+	
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         getToken()
-
-		let session = UserDefaults.standard
-		print("before1")
-		print(session.string(forKey: "access_token"))
-		print("after1")
-		if session.string(forKey: "access_token") != nil {
-			performSegue(withIdentifier: "auth", sender: self)
-		}
+//
+//		let session = UserDefaults.standard
+//		print("before1")
+//		print(session.string(forKey: "access_token"))
+//		print("after1")
+//		if session.string(forKey: "access_token") != nil {
+//			performSegue(withIdentifier: "auth", sender: self)
+//		}
 
 //        authenticateUser()
     }
